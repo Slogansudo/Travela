@@ -30,6 +30,14 @@ class SaveMediafile(object):
         image_ext = filename.split('.')[-1]
         return f'travel/{uuid.uuid4()}.{image_ext}'
 
+    def save_hotel_brand(instance, filename):
+        image_ext = filename.split('.')[-1]
+        return f'hotel/{uuid.uuid4()}.{image_ext}'
+
+    def save_place_image(instance, filename):
+        image_ext = filename.split('.')[-1]
+        return f'places/{uuid.uuid4()}.{image_ext}'
+
     def save_about_us_media(instance, filename):
         image_ext = filename.split('.')[-1]
         return f'about/{uuid.uuid4()}.{image_ext}'

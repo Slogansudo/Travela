@@ -1,0 +1,26 @@
+{% extends 'travel/base.html' %}
+{% block content %}
+{% load static %}
+        <div class="py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-2">
+              </div>
+              <div class="col-md-8">
+                  <div class="card">
+                    <img class="card-img-top" src="{% static 'auth/images/profile.jpg' %}" alt="Card image cap">
+                    <h1>Username: {{user.username}} </h1>
+                    <div class="card-body">
+                      <h1>First name: {{user.first_name}} <br><br>
+                          Last name: {{user.last_name}}<br><br>
+                          Email: {{user.email}}</h1>
+                    </div>
+                      <a href="{% url 'logout' %}"><button class="btn btn-success" id=follow> Logout </button></a><br>
+                      <a href="{% url 'profile_edit' %}"><button class="btn btn-success" id=follows> Account settings </button></a>
+                      <a href="{% url 'delete account' %}"><button class="btn btn-success" id=follow3 style="background-color: #bf2317"> Delete Acount </button></a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+{% endblock %}

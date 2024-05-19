@@ -1,0 +1,136 @@
+{% extends 'travel/base.html' %}
+{% block content %}
+{% load static %}
+
+        <!-- Explore Tour Start -->
+        <div class="container-fluid ExploreTour py-5">
+            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                    <h5 class="section-title px-3">Travel Plans</h5>
+                    <h1 class="mb-4">Total places</h1>
+            </div>
+            <a href="{% url 'landing' %}"><button class="btn btn-success" id=follows style="margin-left: 400px"> Back </button></a>
+            <div class="position-relative mx-auto">
+            </div>
+            <div class="container py-5">
+                <div class="tab-class text-center">
+                    <div class="tab-content">
+                        <div id="NationalTab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                {% for place in travel.places.all %}
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="national-item">
+                                        <img src="{{place.image.url}}" class="img-fluid w-100 rounded" alt="Image">
+                                        <div class="national-content">
+                                            <div class="national-info">
+                                                <h1>{{place.title}}</h1>
+                                                <h4>{{place.category.name}}</h4><br>
+                                                <h5>{{place.address.name}} - {{place.address.city.name}}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="national-plus-icon">
+                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Explore Tour Start -->
+
+            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                    <h1 class="mb-4">Travel Plane</h1>
+            </div>
+        <div class="row g-4 justify-content-center" style="display: flex">
+                    {% if travel.discounts == 0 %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <div class="blog-img-inner">
+                                    <img class="img-fluid w-100 rounded-top" src="{{travel.image.url}}" alt="Image">
+                                </div>
+                                <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
+                                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>{{travel.departure_date}}</small>
+                                    <a href="#"><i class="fa fa-thumbs-up text-primary me-2"></i>{{travel.likes}}</a>
+                                    <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i class="fa fa-comments text-primary me-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-content border border-top-0 rounded-bottom p-4">
+                                <p class="mb-3">Posted By: {{travel.author.employee.username}} </p>
+                                <p class="mb-3">Price: {{travel.price_type}}{{travel.price}} </p>
+                                <a href="#" class="h4">{{travel.name}}</a>
+                                <p class="my-3">{{travel.description}}</p>
+                                <a href="{% url 'booknow' travel.slug %}" class="btn btn-primary rounded-pill py-2 px-4">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <div class="blog-img-inner">
+                                    <div class="tour-offer bg-warning">{{travel.discounts}}% Off</div>
+                                    <img class="img-fluid w-100 rounded-top" src="{{travel.image.url}}" alt="Image">
+                                </div>
+                                <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
+                                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>{{travel.departure_date}}</small>
+                                    <a href="#"><i class="fa fa-thumbs-up text-primary me-2"></i>{{travel.likes}}</a>
+                                    <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i class="fa fa-comments text-primary me-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-content border border-top-0 rounded-bottom p-4">
+                                <p class="mb-3">Posted By: {{travel.author.employee.username}} </p>
+                                <p class="mb-3">Price: {{travel.price_type}}{{travel.price}} </p>
+                                <p class="mb-3">Empty Space: {{travel.persons}}</p>
+                                <a href="#" class="h4">{{travel.name}}</a>
+                                <p class="my-3">{{travel.description}}</p>
+                                <a href="{% url 'booknow' travel.slug %}" class="btn btn-primary rounded-pill py-2 px-4">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                    <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
+                    {% for comment in travel.comments.all %}
+                        <div class="d-flex" style="margin-left: 30%">
+                            <img src="{% static 'img/user.jpg' %}" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                            <div class="">
+                                <p class="mb-2" style="font-size: 14px;">{{comment.created_date}}</p>
+                                <h5>for: {{travel.name}}</h5>
+                                <div class="d-flex justify-content-between">
+                                    <h5>{{comment.user.first_name}} {{comment.user.last_name}}</h5>
+                                    <div class="d-flex mb-3">
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star text-secondary"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                            <p>{{comment.text}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+        </div>
+
+
+        <!-- Subscribe Start -->
+        <div class="container-fluid subscribe py-5">
+            <div class="container text-center py-5">
+                <div class="mx-auto text-center" style="max-width: 900px;">
+                    <h5 class="subscribe-title px-3">Subscribe</h5>
+                    <h1 class="text-white mb-4">Our Newsletter</h1>
+                    <div class="position-relative mx-auto">
+                        <input class="form-control border-primary rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Subscribe End -->
+
+
+    {% endblock %}

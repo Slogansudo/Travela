@@ -1,0 +1,78 @@
+{% extends 'travel/base.html' %}
+{% block content %}
+{% load static %}
+
+        <!-- Explore Tour Start -->
+        <div class="container-fluid ExploreTour py-5">
+            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                    <h5 class="section-title px-3">Travel Plans</h5>
+                    <h1 class="mb-4">General places</h1>
+            </div>
+            <div class="position-relative mx-auto">
+            </div>
+            <div class="container py-5">
+                <div class="tab-class text-center">
+                    <div class="tab-content">
+                        <div id="NationalTab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                {% for image in hotel.images.all %}
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="national-item">
+                                        <img src="{{image.image.url}}" class="img-fluid w-100 rounded" alt="Image">
+                                        <div class="national-content">
+                                            <div class="national-info">
+                                                <h1>{{image.name}}</h1>
+                                                <h4>{{image.created_date}}</h4><br>
+                                            </div>
+                                        </div>
+                                        <div class="national-plus-icon">
+                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                <div class="row g-4 justify-content-center">
+                    {% if hotel.discount == 0 %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <div class="blog-img-inner">
+                                    <img class="img-fluid w-100 rounded-top" src="{{hotel.brand_image.url}}" alt="Image">
+                                </div>
+                            </div>
+                            <div class="blog-content border border-top-0 rounded-bottom p-4">
+                                <p class="mb-3">Price: {{hotel.price_type}}{{hotel.price}} </p>
+                                <p class="mb-3">Service Term: {{hotel.service_term}} </p>
+                                <a href="#" class="h4">{{hotel.name}}</a>
+                                <a href="{% url 'hotel_booking' hotel.slug %}" class="btn btn-primary rounded-pill py-2 px-4">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <div class="blog-img-inner">
+                                    <div class="tour-offer bg-warning">{{hotel.discount}}% Off</div>
+                                    <div class="tour-offer bg-warning">{{travel.discounts}}% Off</div>
+                                    <img class="img-fluid w-100 rounded-top" src="{{hotel.brand_image.url}}" alt="Image">
+                                </div>
+                            </div>
+                            <div class="blog-content border border-top-0 rounded-bottom p-4">
+                                <p class="mb-3">Price: {{hotel.price_type}}{{hotel.price}}</p>
+                                <p class="mb-3">Service Term: {{hotel.service_term}} </p>
+                                <a href="#" class="h4">{{hotel.name}}</a>
+                                <a href="{% url 'hotel_booking' hotel.slug %}" class="btn btn-primary rounded-pill py-2 px-4">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Explore Tour Start -->
+    {% endblock %}

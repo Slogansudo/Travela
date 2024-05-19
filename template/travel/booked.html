@@ -1,0 +1,86 @@
+{% extends 'travel/base.html' %}
+{% block content %}
+{% load static %}
+        <a href="{% url 'landing' %}"><button class="btn btn-success" id=follows style="margin-left: 400px"> Back </button></a><br><br>
+        <div class="row g-5 align-items-center">
+                    {% for booking in booknow %}
+                    {% if booking.travel.discounts == 0 %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <div class="blog-img-inner">
+                                    <img class="img-fluid w-100 rounded-top" src="{{booking.travel.image.url}}" alt="Image">
+                                </div>
+                                <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
+                                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>{{booking.travel.departure_date}}</small>
+                                    <a href="#"><i class="fa fa-thumbs-up text-primary me-2"></i>{{booking.travel.likes}}</a>
+                                    <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i class="fa fa-comments text-primary me-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-content border border-top-0 rounded-bottom p-4">
+                                <p class="mb-3">Posted By: {{booking.travel.author.employee.username}} </p>
+                                <p class="mb-3">Price: {{booking.travel.price_type}}{{booking.travel.price}} </p>
+                                <p class="mb-3">Booked places: {{booking.persons}} </p>
+                                <a href="#" class="h4">{{booking.travel.name}}</a>
+                                <p class="my-3">{{booking.travel.description}}</p>
+                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Booked</a>
+                                <a href="{% url 'booked_delete' booking.id %}"><button class="btn btn-success" id=follow3 style="background-color: #bf2317"> Delete Booked </button></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <div class="blog-img-inner">
+                                    <div class="tour-offer bg-warning">{{booking.travel.discounts}}% Off</div>
+                                    <img class="img-fluid w-100 rounded-top" src="{{booking.travel.image.url}}" alt="Image">
+                                </div>
+                                <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
+                                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>{{booking.travel.departure_date}}</small>
+                                    <a href="#"><i class="fa fa-thumbs-up text-primary me-2"></i>{{booking.travel.likes}}</a>
+                                    <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i class="fa fa-comments text-primary me-2"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-content border border-top-0 rounded-bottom p-4">
+                                <p class="mb-3">Posted By: {{booking.travel.author.employee.username}} </p>
+                                <p class="mb-3">Price: {{booking.travel.price_type}}{{booking.travel.price}} </p>
+                                <p class="mb-3">Booked places: {{booking.persons}} </p>
+                                <a href="#" class="h4">{{booking.travel.name}}</a>
+                                <p class="my-3">{{booking.travel.description}}</p>
+                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Booked</a>
+                                <a href="{% url 'booked_delete' booking.id %}"><button class="btn btn-success" id=follow3 style="background-color: #bf2317"> Delete Booked </button></a>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <h1 style="margin-left: 40%">Total Comments</h1>
+        <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
+            {% for booked in booknow %}
+            {% for comment in booked.travel.comments.all %}
+            <div class="d-flex" style="margin-left: 30%">
+                <img src="{% static 'img/user.jpg' %}" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                <div class="">
+                    <p class="mb-2" style="font-size: 14px;">{{comment.created_date}}</p>
+                    <h5>for: {{booked.travel.name}}</h5>
+                    <div class="d-flex justify-content-between">
+                        <h5>{{comment.user.first_name}} {{comment.user.last_name}}</h5>
+                        <div class="d-flex mb-3">
+                            <i class="fa fa-star text-secondary"></i>
+                            <i class="fa fa-star text-secondary"></i>
+                            <i class="fa fa-star text-secondary"></i>
+                            <i class="fa fa-star text-secondary"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                    <p>{{comment.text}}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    {% endblock %}

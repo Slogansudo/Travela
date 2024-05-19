@@ -48,11 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # extensions
     'django_extensions',
+    'import_export',
     'rest_framework',
     'rest_framework.authtoken',
-    'import_export',
     'drf_yasg',
     # apps
+    'travel_api',
     'traveler',
     'servises',
 
