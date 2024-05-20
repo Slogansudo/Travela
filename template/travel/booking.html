@@ -6,7 +6,7 @@
             <div class="container text-center py-5" style="max-width: 900px;">
                 <h3 class="text-white display-3 mb-4">Travel Packages</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Travel</a></li>
                     <li class="breadcrumb-item active text-white">Booking</li>
                 </ol>
@@ -77,7 +77,7 @@
             <h1 style="margin-left: 40%; color: red">{{comment}}</h1>
             <div class="container py-5" style="display: flex">
                 {% if travel.discounts == 0 %}
-                    <div class="col-lg-4 col-md-6" style="margin-right: 10%">
+                    <div class="col-lg-4 col-md-6" style="background-color: white; margin-right: 10%">
                         <div class="blog-item">
                             <div class="blog-img">
                                 <div class="blog-img-inner">
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     {% else %}
-                    <div class="col-lg-4 col-md-6" style="margin-right: 10%">
+                    <div class="col-lg-4 col-md-6" style="background-color: white; margin-right: 10%">
                         <div class="blog-item">
                             <div class="blog-img">
                                 <div class="blog-img-inner">
@@ -123,7 +123,7 @@
                     </div>
                 {% endif %}
                     <div class="col-lg-6">
-                        <h1>Book A Tour Deals</h1>
+                        <h1 class="text-white mb-2 mt-3">Book A Tour Deals</h1>
                         <form method="post">
                             {% csrf_token %}
                             <div class="row g-3">
@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <h1>{{travel.price}} {{travel.price_type}}</h1>
+                                        <h1 class="text-white mb-2 mt-3">{{travel.price}} {{travel.price_type}}</h1>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

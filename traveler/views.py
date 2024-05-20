@@ -79,7 +79,7 @@ class HomePageView(View):
             travels = Travels.objects.filter(name__icontains=search)
             if not travels:
                 travels = Travels.objects.all()
-            booknow = BookNow.objects.filter(users=request.user)
+            booknow = BookNow.objects.all()
             context = {
                 'aboutus': aboutus,
                 'places': places,

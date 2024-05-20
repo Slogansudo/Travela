@@ -253,8 +253,11 @@
                                             <div class="destination-img">
                                                 <img class="img-fluid rounded w-100" src="{{city.image.url}}" alt="">
                                                 <div class="destination-overlay p-4">
-                                                    <h4 >{{city.name}}</h4>
-                                                    <a href="{% url 'city_places' city.id %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                                    <h4 class="text-white mb-2 mt-3">{{city.name}}</h4>
+                                                    <a href="{% url 'city_places' city.id %}" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                                </div>
+                                                <div class="search-icon">
+                                                    <a href="{{city.image.url}}" data-lightbox="destination-2"><i class="fa fa-plus-square fa-1x btn btn-light btn-lg-square text-primary"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -271,10 +274,11 @@
                                     <div class="destination-img">
                                         <img class="img-fluid rounded w-100" src="{{city.image.url}}" alt="">
                                         <div class="destination-overlay p-4">
-                                            <h4 >{{city.name}}</h4>
-                                            <a href="{% url 'city_places' city.id %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                            <h4 class="text-white mb-2 mt-3" >{{city.name}}</h4>
+                                            <a href="{% url 'city_places' city.id %}" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
                                         <div class="search-icon">
+                                            <a href="{{city.image.url}}" data-lightbox="destination-2"><i class="fa fa-plus-square fa-1x btn btn-light btn-lg-square text-primary"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -290,10 +294,11 @@
                                     <div class="destination-img">
                                         <img class="img-fluid rounded w-100" src="{{city.image.url}}" alt="">
                                         <div class="destination-overlay p-4">
-                                            <h4 >{{city.name}}</h4>
-                                            <a href="{% url 'city_places' city.id %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                            <h4 class="text-white mb-2 mt-3" >{{city.name}}</h4>
+                                            <a href="{% url 'city_places' city.id %}" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
                                         <div class="search-icon">
+                                            <a href="{{city.image.url}}" data-lightbox="destination-2"><i class="fa fa-plus-square fa-1x btn btn-light btn-lg-square text-primary"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -309,10 +314,11 @@
                                     <div class="destination-img">
                                         <img class="img-fluid rounded w-100" src="{{city.image.url}}" alt="">
                                         <div class="destination-overlay p-4">
-                                            <h4 >{{city.name}}</h4>
-                                            <a href="{% url 'city_places' city.id %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                            <h4 class="text-white mb-2 mt-3" >{{city.name}}</h4>
+                                            <a href="{% url 'city_places' city.id %}" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
                                         <div class="search-icon">
+                                            <a href="{{city.image.url}}" data-lightbox="destination-2"><i class="fa fa-plus-square fa-1x btn btn-light btn-lg-square text-primary"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -328,10 +334,11 @@
                                     <div class="destination-img">
                                         <img class="img-fluid rounded w-100" src="{{city.image.url}}" alt="">
                                         <div class="destination-overlay p-4">
-                                            <h4 >{{city.name}}</h4>
-                                            <a href="{% url 'city_places' city.id %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                            <h4 class="text-white mb-2 mt-3" >{{city.name}}</h4>
+                                            <a href="{% url 'city_places' city.id %}" class="btn btn-primary rounded-pill py-2 px-4" >View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
                                         <div class="search-icon">
+                                            <a href="{{city.image.url}}" data-lightbox="destination-2"><i class="fa fa-plus-square fa-1x btn btn-light btn-lg-square text-primary"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -451,48 +458,47 @@
             </div>
         </div>
         <!-- Explore Tour Start -->
-
-        <!-- Packages Start -->
+                <!-- Packages Start -->
         <div class="container-fluid packages py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center mb-5" style="max-width: 900px;">
                     <h5 class="section-title px-3">Packages</h5>
                     <h1 class="mb-0">Awesome Packages</h1>
                 </div>
-                <div class="owl-carousel vegetable-carousel justify-content-center">
+                <div class="packages-carousel owl-carousel">
                     {% for travel in travels %}
                         {% for place in travel.places.all %}
-                        <div class="packages-item">
-                            <div class="packages-img">
-                                <img src="{{place.image.url}}" class="img-fluid w-100 rounded-top" alt="Image">
-
-                                <div class="packages-price py-2 px-4">{{travel.price_type}}{{travel.price}}</div>
+                    <div class="packages-item">
+                        <div class="packages-img">
+                            <img src="{{place.image.url}}" class="img-fluid w-100 rounded-top" alt="Image">
+                            <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute" style="width: 100%; bottom: 0; left: 0; z-index: 5;">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt me-2"></i>{{place.address.name}} - {{place.address.city.name}}</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt me-2"></i>{{travel.departure_date}}</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-user me-2"></i>{{travel.persons}} Persons</small>
                             </div>
-                            <div class="packages-content bg-light">
-                                <div class="p-4 pb-0">
-                                    <h5 class="mb-0">{{place.address.name}} - {{place.address.city.name}}</h5>
-                                    <div class="mb-3">
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                    </div>
-                                    <p class="mb-4">{{travel.description}}</p>
-                                    <p class="mb-3">Empty Space: {{travel.persons}}</p>
-                                    <p>place: {{place.title}}</p>
-                                    {% for hotel in place.hotels.all %}
-                                    <p>hotels: {{hotel.name}}</p>
-                                    {% endfor %}
+                            <div class="packages-price py-2 px-4">{{travel.price_type}}{{travel.price}}</div>
+                        </div>
+                        <div class="packages-content bg-light">
+                            <div class="p-4 pb-0">
+                                <h5 class="mb-0">{{place.address.name}} - {{place.address.city.name}}</h5>
+                                <small class="text-uppercase">Hotel Deals</small>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
                                 </div>
-                                <div class="row bg-primary rounded-bottom mx-0">
-                                    <div class="col-6 text-end px-0">
-                                        <a href="{% url 'viewplaces' travel.slug %}" class="btn-hover btn text-white py-2 px-4">Book Now</a>
-                                    </div>
+                                <p class="mb-4">{{travel.description}}</p>
+                            </div>
+                            <div class="row bg-primary rounded-bottom mx-0">
+                                <div class="col-6 text-end px-0">
+                                    <a href="{% url 'viewplaces' travel.slug %}" class="btn-hover btn text-white py-2 px-4">Book Now</a>
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
+                    </div>
+                    {% endfor %}
                     {% endfor %}
                 </div>
             </div>
@@ -542,9 +548,12 @@
                                     <img src="{{place.image.url}}" class="img-fluid w-100 h-100 rounded" alt="Image">
                                     <div class="gallery-content">
                                         <div class="gallery-info">
-                                            <h5>{{place.category.name}}</h5>
-                                            <a href="{% url 'places' place.slug %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                            <h5 class="text-white mb-2 mt-3">{{place.category.name}}</h5>
+                                            <a href="{% url 'places' place.slug %}" class="btn btn-primary rounded-pill py-2 px-4">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
+                                    </div>
+                                    <div class="gallery-plus-icon">
+                                        <a href="{{place.image.url}}" data-lightbox="gallery-2" class="my-auto"><i class="fas fa-plus fa-2x text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -560,12 +569,12 @@
                                     <img src="{{place.image.url}}" class="img-fluid w-100 h-100 rounded" alt="Image">
                                     <div class="gallery-content">
                                         <div class="gallery-info">
-                                            <h5 >{{place.category.name}}</h5>
-                                            <a href="{% url 'places' place.slug %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                            <h5 class="text-white mb-2 mt-3">{{place.category.name}}</h5>
+                                            <a href="{% url 'places' place.slug %}" class="btn btn-primary rounded-pill py-2 px-4">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
                                     </div>
                                     <div class="gallery-plus-icon">
-                                        <a href="img/gallery-2.jpg" data-lightbox="gallery-2" class="my-auto"><i class="fas fa-plus fa-2x text-white"></i></a>
+                                        <a href="{{place.image.url}}" data-lightbox="gallery-2" class="my-auto"><i class="fas fa-plus fa-2x text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -582,9 +591,12 @@
                                         <img src="{{place.image.url}}" class="img-fluid w-100 h-100 rounded" alt="Image">
                                         <div class="gallery-content">
                                             <div class="gallery-info">
-                                                <h5>{{place.category.name}}</h5>
-                                                <a href="{% url 'places' place.slug %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                                <h5 class="text-white mb-2 mt-3">{{place.category.name}}</h5>
+                                                <a href="{% url 'places' place.slug %}" class="btn btn-primary rounded-pill py-2 px-4">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                             </div>
+                                        </div>
+                                        <div class="gallery-plus-icon">
+                                            <a href="{{place.image.url}}" data-lightbox="gallery-2" class="my-auto"><i class="fas fa-plus fa-2x text-white"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -601,12 +613,12 @@
                                     <img src="{{place.image.url}}" class="img-fluid w-100 h-100 rounded" alt="Image">
                                     <div class="gallery-content">
                                         <div class="gallery-info">
-                                            <h5 >{{place.category.name}}</h5>
-                                            <a href="{% url 'places' place.slug %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                            <h5 class="text-white mb-2 mt-3">{{place.category.name}}</h5>
+                                            <a href="{% url 'places' place.slug %}" class="btn btn-primary rounded-pill py-2 px-4">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
                                     </div>
                                     <div class="gallery-plus-icon">
-                                        <a href="img/gallery-2.jpg" data-lightbox="gallery-2" class="my-auto"><i class="fas fa-plus fa-2x text-white"></i></a>
+                                        <a href="{{place.image.url}}" data-lightbox="gallery-2" class="my-auto"><i class="fas fa-plus fa-2x text-white"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -623,12 +635,12 @@
                                     <img src="{{place.image.url}}" class="img-fluid w-100 h-100 rounded" alt="Image">
                                     <div class="gallery-content">
                                         <div class="gallery-info">
-                                            <h5 >{{place.category.name}}</h5>
-                                            <a href="{% url 'places' place.slug %}">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                            <h5 class="text-white mb-2 mt-3">{{place.category.name}}</h5>
+                                            <a href="{% url 'places' place.slug %}" class="btn btn-primary rounded-pill py-2 px-4">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
                                     </div>
                                     <div class="gallery-plus-icon">
-                                        <a href="img/gallery-2.jpg" data-lightbox="gallery-2" class="my-auto"><i class="fas fa-plus fa-2x text-white"></i></a>
+                                        <a href="{{place.image.url}}" data-lightbox="gallery-2" class="my-auto"><i class="fas fa-plus fa-2x text-white"></i></a>
                                     </div>
                                 </div>
                             </div>

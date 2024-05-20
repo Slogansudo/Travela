@@ -7,7 +7,7 @@
             <div class="container text-center py-5" style="max-width: 900px;">
                 <h3 class="text-white display-3 mb-4">Travel Packages</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active text-white">Packages</li>
                 </ol>
@@ -36,9 +36,9 @@
                                         <img src="{{place.image.url}}" class="img-fluid w-100 rounded" alt="Image">
                                         <div class="national-content">
                                             <div class="national-info">
-                                                <h1>{{place.title}}</h1>
-                                                <h4>{{place.category.name}}</h4><br>
-                                                <h5>{{place.address.name}} - {{place.address.city.name}}</h5>
+                                                <h1 class="text-white mb-2 mt-3">{{place.title}}</h1>
+                                                <h4 class="text-white mb-2 mt-3">{{place.category.name}}</h4><br>
+                                                <h5 class="text-white mb-2 mt-3">{{place.address.name}} - {{place.address.city.name}}</h5>
                                             </div>
                                         </div>
                                         <div class="national-plus-icon">
@@ -78,6 +78,9 @@
                                 <a href="#" class="h4">{{travel.name}}</a>
                                 <p class="my-3">{{travel.description}}</p>
                                 <a href="{% url 'booknow' travel.slug %}" class="btn btn-primary rounded-pill py-2 px-4">Book Now</a>
+                            </div>
+                            <div class="national-plus-icon">
+                                <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
                             </div>
                         </div>
                     </div>

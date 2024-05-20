@@ -226,6 +226,9 @@ class BookingDetailView(LoginRequiredMixin, View):
 class DeleteBookedView(LoginRequiredMixin, View):
     def get(self, request, id):
         booknow = BookNow.objects.get(id=id)
+        travel = booknow.travel
+        travel.persons += int(booknow.persons)
+        travel.save()
         booknow.delete()
         return redirect('booking_detail')
 
