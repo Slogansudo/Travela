@@ -32,8 +32,8 @@ LOGIN_URL = 'login'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['161.35.170.17']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['travel.srmslogan.uz']
+
 
 # Application definition
 
@@ -147,10 +147,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-if DEBUG:
+"""if DEBUG:
     STATICFILES_DIRS = [BASE_DIR, 'static']
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+else:"""
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
